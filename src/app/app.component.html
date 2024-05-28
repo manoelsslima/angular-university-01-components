@@ -8,7 +8,22 @@
 
 <div class="courses">
 
-  @for(course of courses; track course) {
-    <course-card [course]="course" (courseSelected)="onCourseSelected($event)" />
+  @for(course of courses; track course; let indice = $index;
+    let contador = $count; let primeiroElemento = $first;
+    let ultimoElemento = $last; let par = $even; let impar = $odd) {
+
+    <h1>Contador: {{ contador }}</h1>
+
+    <course-card
+      [course]="course"
+      [index]="indice"
+      [class.is-first]="primeiroElemento"
+      [class.is-last]="ultimoElemento"
+      [class.is-even]="par"
+      [class.is-odd]="impar"
+      (courseSelected)="onCourseSelected($event)" />
+  }
+  @empty {
+    <h1>No courses found!</h1>
   }
 </div>

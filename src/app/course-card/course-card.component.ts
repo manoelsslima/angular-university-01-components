@@ -16,6 +16,11 @@ export class CourseCardComponent {
   })
   course: Course;
 
+  @Input({
+    required: true
+  })
+  index: number;
+
   /*
   Emite o evento do tipo Course, que será capturado por quem chamar o método
   que emite esse evento (onCourseViewed, nesse caso).
