@@ -9,11 +9,7 @@ import { Course } from './model/course';
 })
 export class AppComponent {
 
-  coreCourse = COURSES[0];
-
-  rxjsCourse = COURSES[1];
-
-  ngrxCourse = COURSES[2];
+  courses: Course[] = COURSES;
 
   /*
   pega o evento que foi emitido pelo botão View Couse do componente <course-card />
