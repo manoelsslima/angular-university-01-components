@@ -24,7 +24,7 @@ export class CourseCardComponent {
   /*
   Emite o evento do tipo Course, que será capturado por quem chamar o método
   que emite esse evento (onCourseViewed, nesse caso).
-  
+
   Ou seja, o componente pai, que chama o método onCourseViewed($event) quando usa o
   manipulador de eventos "courseSelected" do componente <course-card />, vai
   receber um evento (através da variável "$event") com o "this.course".
@@ -43,6 +43,10 @@ export class CourseCardComponent {
     console.log("card component - button clicked...");
     // emite o curso atual (this.course)
     this.courseSelected.emit(this.course);
+  }
+
+  cardClasses() {
+    return {'beginner': this.course.category == 'BEGINNER'}
   }
 
 }
