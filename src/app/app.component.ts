@@ -9,6 +9,20 @@ import { Course } from './model/course';
 })
 export class AppComponent {
 
+  startDate = new Date(2000, 0, 1);
+  title = "ANGULAR core deep Dive";
+  price = 9.992849891;
+  rate = 0.67;
+  name = {'nome':'Manoel', 'sobrenome': 'Lima'}
+  course = {
+    id: 1,
+    description: "Angular Core Deep Dive",
+    iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png',
+    longDescription: "A detailed walk-through of the most important part of Angular - the Core and Common modules",
+    category: 'INTERMEDIATE',
+    lessonsCount: 10
+  }
+
   courses: Course[] = COURSES;
 
   /*
