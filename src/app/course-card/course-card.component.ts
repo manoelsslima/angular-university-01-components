@@ -21,7 +21,7 @@ export class CourseCardComponent {
   })
   index: number;
 
-  /*
+  /**
   Emite o evento do tipo Course, que será capturado por quem chamar o método
   que emite esse evento (onCourseViewed, nesse caso).
 
@@ -45,8 +45,22 @@ export class CourseCardComponent {
     this.courseSelected.emit(this.course);
   }
 
+  /**
+   * Aplica estilos condicionalmente.
+   *
+   * @returns objeto de configuração
+   */
   cardClasses() {
     return {'beginner': this.course.category == 'BEGINNER'}
+  }
+
+  /**
+   * Aplica múltiplos estilos a um elemento.
+   *
+   * @returns objeto de configuração
+   */
+  cardStyles() {
+    return "{'text-decoration': 'underline'}";
   }
 
 }
