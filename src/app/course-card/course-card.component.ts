@@ -60,7 +60,7 @@ export class CourseCardComponent {
    * @returns objeto de configuração
    */
   cardStyles() {
-    return "{'text-decoration': 'underline'}";
+    return {'text-decoration': 'underline'};
   }
 
 }
