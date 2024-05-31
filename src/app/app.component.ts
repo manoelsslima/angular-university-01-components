@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import {COURSES} from '../db-data';
 import { Course } from './model/course';
 import { CourseCardComponent } from './course-card/course-card.component';
@@ -10,37 +10,42 @@ import { CourseCardComponent } from './course-card/course-card.component';
 })
 export class AppComponent implements AfterViewInit {
 
-  @ViewChild('cardRef')
-  card: CourseCardComponent;
-
-  @ViewChild('container')
-  containerDiv: ElementRef;
-
-  @ViewChild('cardHtml', {read: ElementRef})
-  elementoHTML: ElementRef;
-
-  @ViewChild('courseImage', {read: ElementRef})
-  elementoImage: ElementRef;
-
   courses: Course[] = COURSES;
 
+  @ViewChildren(CourseCardComponent)
+  cards: QueryList<CourseCardComponent>;
+
   constructor() {
-    console.log("containerDiv", this.containerDiv);
+
   }
 
   ngAfterViewInit(): void {
-    console.log("containerDiv", this.containerDiv);
-    console.log("elementoImage", this.elementoImage);
+    //console.log(this.cards.last);
+    // emitirá muitos eventos ao longo do tempo à medida que a coleção for modificada
+    this.cards.changes.subscribe(
+      cards => console.log(cards)
+    );
+    console.log(this.cards);
+  }
+
+  onCoursesEdited() {
+    this.courses.push(
+      {
+        id: 10,
+        description: "Angular Material Course",
+        iconUrl: "https://s3-us-west-1.amazonaws.com/angular-university/course-images/material_design.png",
+        longDescription: "Build Applications with the official Angular Widget Library",
+        category: 'ADVANCED',
+        lessonsCount: 0
+      }
+    );
   }
 
   /*
   pega o evento que foi emitido pelo botão View Couse do componente <course-card />
   */
   onCourseSelected(course: Course) {
-    console.log("onCourseSelected");
-    console.log(this.card);
-    console.log(this.containerDiv);
-    console.log(this.elementoHTML);
+    console.log(course);
   }
 
   /*
