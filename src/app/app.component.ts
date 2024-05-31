@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import {COURSES} from '../db-data';
 import { Course } from './model/course';
 import { CourseCardComponent } from './course-card/course-card.component';
@@ -8,7 +8,7 @@ import { CourseCardComponent } from './course-card/course-card.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
   @ViewChild('cardRef')
   card: CourseCardComponent;
@@ -19,7 +19,19 @@ export class AppComponent {
   @ViewChild('cardHtml', {read: ElementRef})
   elementoHTML: ElementRef;
 
+  @ViewChild('courseImage', {read: ElementRef})
+  elementoImage: ElementRef;
+
   courses: Course[] = COURSES;
+
+  constructor() {
+    console.log("containerDiv", this.containerDiv);
+  }
+
+  ngAfterViewInit(): void {
+    console.log("containerDiv", this.containerDiv);
+    console.log("elementoImage", this.elementoImage);
+  }
 
   /*
   pega o evento que foi emitido pelo botão View Couse do componente <course-card />

@@ -4,7 +4,7 @@
       {{ index }} {{ course.description }}
   </div>
   @if(course.iconUrl) {
-    <img width="300" alt="Angular Logo"
+    <img #courseImage width="300" alt="Angular Logo"
     [src]="course.iconUrl">
   }
   @else {
