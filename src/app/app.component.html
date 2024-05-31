@@ -5,12 +5,12 @@
 
 </div>
 
-<div class="courses">
-    <course-card
+<div class="courses" #container>
+    <course-card #cardRef
       [course]="courses[0]"
       (courseSelected)="onCourseSelected($event)" />
 
-      <course-card
+    <course-card #cardHtml
       [course]="courses[1]"
       (courseSelected)="onCourseSelected($event)" />
 </div>
