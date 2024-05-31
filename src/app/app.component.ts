@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {COURSES} from '../db-data';
 import { Course } from './model/course';
+import { CourseCardComponent } from './course-card/course-card.component';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +10,8 @@ import { Course } from './model/course';
 })
 export class AppComponent {
 
-  startDate = new Date(2000, 0, 1);
-  title = "ANGULAR core deep Dive";
-  price = 9.992849891;
-  rate = 0.67;
-  name = {'nome':'Manoel', 'sobrenome': 'Lima'}
-  course = {
-    id: 1,
-    description: "Angular Core Deep Dive",
-    iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png',
-    longDescription: "A detailed walk-through of the most important part of Angular - the Core and Common modules",
-    category: 'INTERMEDIATE',
-    lessonsCount: 10
-  }
+  @ViewChild(CourseCardComponent)
+  card: CourseCardComponent;
 
   courses: Course[] = COURSES;
 
@@ -29,7 +19,8 @@ export class AppComponent {
   pega o evento que foi emitido pelo botão View Couse do componente <course-card />
   */
   onCourseSelected(course: Course) {
-    console.log("App component - click event bubbled...", course);
+    console.log("onCourseSelected");
+    console.log(this.card);
   }
 
   /*

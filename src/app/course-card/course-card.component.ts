@@ -17,7 +17,7 @@ export class CourseCardComponent {
   course: Course;
 
   @Input({
-    required: true
+    required: false
   })
   index: number;
 
@@ -40,8 +40,8 @@ export class CourseCardComponent {
   courseSelected = new EventEmitter<Course>();
 
   onCourseViewed() {
-    console.log("card component - button clicked...");
     // emite o curso atual (this.course)
+    console.log("onCourseViewed");
     this.courseSelected.emit(this.course);
   }
 

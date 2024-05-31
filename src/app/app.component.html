@@ -5,53 +5,12 @@
 
 </div>
 
-<div class="demo">
-  <div>Start Date: {{ startDate }}</div>
-  <div>Start Date: {{ startDate | date }}</div>
-  <div>Start Date: {{ startDate | date: 'MM/dd/yyyy' }}</div>
-  <div>Start Date: {{ startDate | date: 'MMM/dd/yyyy' }}</div>
-
-  <div>{{ title }}</div>
-  <div>{{ title | uppercase }}</div>
-  <div>{{ title | lowercase }}</div>
-  <div>{{ title | titlecase }}</div>
-
-  <div>{{ price }}</div>
-  <div>{{ price | number }}</div>
-  <div>{{ price | number: '3.' }}</div>
-  <div>{{ price | number: '3.4' }}</div>
-  <div>{{ price | number: '3.3-6' }}</div>
-  <div>{{ price | currency }}</div>
-  <div>{{ price | currency: 'BRL' }}</div>
-
-  <div>Percentage: {{ rate | percent }}</div>
-
-  <div>{{ name | json }}</div>
-
-  <div *ngFor="let pair of course | keyvalue">
-    {{ pair.key + ': ' + pair.value }}
-  </div>
-
-</div>
-
 <div class="courses">
-
-  @for(course of courses; track trackCourse; let indice = $index;
-    let contador = $count; let primeiroElemento = $first;
-    let ultimoElemento = $last; let par = $even; let impar = $odd) {
-
-    <h1>Contador: {{ contador }}</h1>
-
     <course-card
-      [course]="course"
-      [index]="indice"
-      [class.is-first]="primeiroElemento"
-      [class.is-last]="ultimoElemento"
-      [class.is-even]="par"
-      [class.is-odd]="impar"
+      [course]="courses[0]"
       (courseSelected)="onCourseSelected($event)" />
-  }
-  @empty {
-    <h1>No courses found!</h1>
-  }
+
+      <course-card
+      [course]="courses[1]"
+      (courseSelected)="onCourseSelected($event)" />
 </div>
