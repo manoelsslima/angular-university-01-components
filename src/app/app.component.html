@@ -5,12 +5,15 @@
 
 </div>
 
-<button (click)="onCoursesEdited()">Edit Courses</button>
 
-<div class="courses" #container>
-  @for(course of courses; track course.id) {
+<div class="courses" *ngIf="courses[0] as course">
     <course-card
     [course]="course"
-    (courseSelected)="onCourseSelected($event)" />
-  }
+    (courseSelected)="onCourseSelected($event)">
+
+      <img width="300" alt="Angular Logo"
+      [src]="course.iconUrl">
+
+      <h5>Total lessons: 5</h5>
+    </course-card>
 </div>

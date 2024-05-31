@@ -3,13 +3,8 @@
   <div class="course-title" [ngStyle]="cardStyles()">
       {{ index }} {{ course.description }}
   </div>
-  @if(course.iconUrl) {
-    <img #courseImage width="300" alt="Angular Logo"
-    [src]="course.iconUrl">
-  }
-  @else {
-    <h2>No imagem available!</h2>
-  }
+
+  <ng-content select="img"></ng-content>
 
   <div class="course-description">
     {{ course.longDescription }}
