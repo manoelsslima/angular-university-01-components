@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Course } from '../model/course';
 
@@ -9,7 +9,10 @@ import { Course } from '../model/course';
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css'
 })
-export class CourseCardComponent {
+export class CourseCardComponent implements AfterViewInit {
+
+  @ContentChild('courseImage')
+  image;
 
   @Input({
     required: true
@@ -38,6 +41,10 @@ export class CourseCardComponent {
   @Output() // o @Output é quem faz com que o evento "saia" do componente. É possível renomear o nome do evento
   // com @Output('novoNomeDoEvento')
   courseSelected = new EventEmitter<Course>();
+
+  ngAfterViewInit(): void {
+    console.log("ngAfterViewInit", this.image);
+  }
 
   onCourseViewed() {
     // emite o curso atual (this.course)
