@@ -23,29 +23,16 @@ export class AppComponent implements AfterViewInit {
     //console.log(this.cards.last);
     // emitirá muitos eventos ao longo do tempo à medida que a coleção for modificada
     this.cards.changes.subscribe(
-      cards => console.log(cards)
+      //cards => console.log(cards)
     );
-    console.log(this.cards);
-  }
-
-  onCoursesEdited() {
-    this.courses.push(
-      {
-        id: 10,
-        description: "Angular Material Course",
-        iconUrl: "https://s3-us-west-1.amazonaws.com/angular-university/course-images/material_design.png",
-        longDescription: "Build Applications with the official Angular Widget Library",
-        category: 'ADVANCED',
-        lessonsCount: 0
-      }
-    );
+    //console.log(this.cards);
   }
 
   /*
   pega o evento que foi emitido pelo botão View Couse do componente <course-card />
   */
   onCourseSelected(course: Course) {
-    console.log(course);
+    console.log("onCourseSelected", course);
   }
 
   /*

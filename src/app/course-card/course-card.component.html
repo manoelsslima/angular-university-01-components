@@ -1,14 +1,12 @@
-<div class="course-card" [ngClass]="cardClasses()">
+<div class="course-card" [ngClass]="cardClasses()" #container>
 
   <div class="course-title" [ngStyle]="cardStyles()">
       {{ index }} {{ course.description }}
   </div>
 
-  <ng-content select="img"></ng-content>
+  <ng-content select="course-image"></ng-content>
 
-  <div class="course-description">
-    {{ course.longDescription }}
-  </div>
+  <ng-content select=".course-description"></ng-content>
 
   <div class="course-category">
     @switch (this.course.category) {

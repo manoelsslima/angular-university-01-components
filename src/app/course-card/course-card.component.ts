@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ContentChild, EventEmitter, Input, Output } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Course } from '../model/course';
+import { CourseImageComponent } from '../course-image/course-image.component';
 
 @Component({
   selector: 'course-card',
@@ -9,9 +10,9 @@ import { Course } from '../model/course';
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css'
 })
-export class CourseCardComponent implements AfterViewInit {
+export class CourseCardComponent implements AfterContentInit {
 
-  @ContentChild('courseImage')
+  @ContentChild('teste')
   image;
 
   @Input({
@@ -42,8 +43,12 @@ export class CourseCardComponent implements AfterViewInit {
   // com @Output('novoNomeDoEvento')
   courseSelected = new EventEmitter<Course>();
 
+  ngAfterContentInit(): void {
+    console.log("ngAfterContentInit - course-card.component", this.image);
+  }
+
   ngAfterViewInit(): void {
-    console.log("ngAfterViewInit", this.image);
+
   }
 
   onCourseViewed() {
