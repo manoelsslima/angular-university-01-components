@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, EventEmitter, Input, Output } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Course } from '../model/course';
 import { CourseImageComponent } from '../course-image/course-image.component';
@@ -14,6 +14,9 @@ export class CourseCardComponent implements AfterContentInit {
 
   @ContentChild(CourseImageComponent)
   image: CourseImageComponent;
+
+  @Input()
+  noImageTpl: TemplateRef<any>;
 
   @Input({
     required: true
