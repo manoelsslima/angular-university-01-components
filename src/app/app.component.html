@@ -11,7 +11,11 @@
       [course]="course"
       (courseSelected)="onCourseSelected($event)">
 
-      <course-image [src]="course.iconUrl"></course-image>
+      <!-- <course-image [src]="course.iconUrl"></course-image> -->
+      <div class="course-image" #courseImage>
+        <img width="300" alt="Angular Logo" [src]="course.iconUrl" />
+
+      </div>
 
       <div class="course-description">
         {{ course.longDescription }}
