@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Course } from '../model/course';
 import { CourseImageComponent } from '../course-image/course-image.component';
@@ -12,8 +12,8 @@ import { CourseImageComponent } from '../course-image/course-image.component';
 })
 export class CourseCardComponent implements AfterContentInit {
 
-  @ContentChild('teste')
-  image;
+  @ContentChild(CourseImageComponent)
+  image: CourseImageComponent;
 
   @Input({
     required: true
@@ -48,7 +48,7 @@ export class CourseCardComponent implements AfterContentInit {
   }
 
   ngAfterViewInit(): void {
-
+    console.log(this.image);
   }
 
   onCourseViewed() {
