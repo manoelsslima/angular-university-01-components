@@ -4,13 +4,13 @@
       {{ index }} {{ course.description }}
   </div>
 
-  <ng-template #blankImage>
+  <!-- <ng-template #blankImage>
     <p class="warn">No image is available yet.</p>
     <img src="/assets/empty-image.png" />
-  </ng-template>
+  </ng-template> -->
 
   <ng-content select=".course-image"
-  *ngIf="course.iconUrl; else blankImage"></ng-content>
+  *ngIf="course.iconUrl; "></ng-content>
 
   <ng-content select=".course-description"></ng-content>
 
